@@ -2,16 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class AnalyticsDashboard extends React.Component 
-{
-	render() {
-		return (
-			<p>
-			Hello
-			</p>
-		);
-	}
-}
+import AnalyticsDashboard from './App';
+
 
 ReactDOM.render(<AnalyticsDashboard />, document.getElementById('root'));
 
