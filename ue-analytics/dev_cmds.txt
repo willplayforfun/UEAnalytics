@@ -1,0 +1,5 @@
+netlify dev
+
+npm run-script build
+
+netlify deploy
