@@ -29,16 +29,14 @@
 
 exports.handler = function(event, context, callback) {
     // your server-side functionality	
-	console.log('queryStringParameters', event.queryStringParameters)
+	console.log('queryStringParameters', event.queryStringParameters);
 
-	const subject = event.queryStringParameters.name || 'World'
+	const subject = event.queryStringParameters.name || 'World';
 	
-	callback(
-		null, 
-		{
-			statusCode: 200,
-			body: JSON.stringify({ msg:"Hello, " + subject + "!" })
-		}
-	);
-	//body: JSON.stringify({ msg: 'Hello, World!' }),
+	const fullMsg = "Hello, " + subject + "! (env TEST_VAR=" + process.env.TEST_VAR + ")";
+	
+	callback(null, {
+		statusCode: 200,
+		body: JSON.stringify({ msg: fullMsg })
+	});
 }

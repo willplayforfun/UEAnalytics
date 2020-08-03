@@ -7,20 +7,23 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "googleapis": "^51.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
+    "react-scripts": "3.3.1",
+    "faunadb": "^2.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:lambda": "netlify-lambda serve ./lambda",
+    "start:lambda": "netlify-lambda serve --config ./webpack.lambda.js ./lambda",
     "build": "npm-run-all build:**",
     "build:app": "react-scripts build",
-    "build:lambda": "netlify-lambda build ./lambda",
+    "build:lambda": "netlify-lambda build --config ./webpack.lambda.js ./lambda",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy",
+    "bootstrap": "node ./bootstrap-fauna-database.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +32,7 @@
     "production": [
       ">0.2%",
       "not dead",
+      "not ie <= 11",
       "not op_mini all"
     ],
     "development": [
@@ -39,8 +43,8 @@
   },
   "homepage": ".",
   "devDependencies": {
+    "dotenv-webpack": "^1.8.0",
     "npm-run-all": "^4.1.5",
-    "netlify-lambda": "^1.6.3",
-    "gh-pages": "^2.2.0"
+    "netlify-lambda": "^1.6.3"
   }
 }
